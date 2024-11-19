@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchUsers, updateUser } from "../api";
-import UserForm from "./UserForm";
+import UserForm from "../components/UserForm";
+import Spinner from "../components/Spinner";
 
 const EditUserPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUsers()
@@ -14,23 +16,30 @@ const EditUserPage = () => {
         const user = users.find((u) => u._id === id);
         setUserData(user);
       })
-      .catch(() => alert("Failed to fetch user details"));
+      .catch(() => alert("Failed to fetch user details"))
+      .finally(() => setLoading(false));
   }, [id]);
 
   const handleUpdateUser = async (data) => {
+    setLoading(true);
     try {
       await updateUser(id, data);
-      navigate("/");
+      navigate("/",);
     } catch {
       alert("Failed to update user");
+    } finally {
+      setLoading(false);
     }
   };
 
-  return userData ? (
+  return loading ? (
+    <Spinner />
+  ) : userData ? (
     <UserForm initialData={userData} onSubmit={handleUpdateUser} />
   ) : (
-    <p>Loading...</p>
+    <p>User not found</p>
   );
+  
 };
 
 export default EditUserPage;

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import UserList from "./components/UserList";
-import AddUserForm from "./components/AddUserForm";
-import EditUserPage from "./components/EditUserPage";
+import AddUserPage from "./pages/AddUserPage";
+import EditUserPage from "./pages/EditUserPage";
 
 const App = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -26,7 +26,7 @@ const App = () => {
           <main className="p-4">
             <Routes>
               <Route path="/" element={<UserList />} />
-              <Route path="/add-user" element={<AddUserForm />} />
+              <Route path="/add-user" element={<AddUserPage />} />
               <Route path="/edit-user/:id" element={<EditUserPage />} />
             </Routes>
           </main>

@@ -13,7 +13,7 @@ const Header = ({ toggleSidebar }) => {
         />
         <div className="flex flex-col">
         <h1 className="text-lg font-semibold text-white">Welcome Back!</h1>
-        <p className="text-sm text-white">Hello, Good to see you!</p>
+        <p className="text-sm text-white">Hello, Good to see you !</p>
         </div>
         
       </div>
@@ -26,8 +26,8 @@ const Header = ({ toggleSidebar }) => {
           className="w-10 h-10 rounded-full object-cover border-2 border-gray-300"
         />
         <div className="text-left">
-          <p className="text-sm font-medium text-white">John Doe</p>
-          <p className="text-xs text-gray-400">Admin</p>
+          <p className="text-sm font-medium text-white">Omprakash</p>
+          <p className="text-xs text-blue text-center px-1 py-1 mt-1 rounded-full bg-green-500">Admin</p>
         </div>
       </div>
     </header>
