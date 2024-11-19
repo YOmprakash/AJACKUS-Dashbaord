@@ -29,14 +29,7 @@ const Sidebar = ({ isCollapsed }) => {
           <FaUserPlus />
           Add User
         </NavLink>
-        <NavLink
-          to="/edit-user/1"
-          className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 transition"
-          activeClassName="bg-gray-700"
-        >
-          <FaEdit />
-          Edit User
-        </NavLink>
+        
       </nav>
     </aside>
   );
