@@ -5,9 +5,11 @@ import Sidebar from "./components/Sidebar";
 import UserList from "./components/UserList";
 import AddUserPage from "./pages/AddUserPage";
 import EditUserPage from "./pages/EditUserPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleSidebar = () => {
     setIsCollapsed((prev) => !prev);
@@ -32,6 +34,7 @@ const App = () => {
           </main>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </Router>
   );
 };

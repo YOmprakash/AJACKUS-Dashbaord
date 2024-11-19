@@ -3,11 +3,12 @@ import { fetchUsers, deleteUser } from "../api";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Spinner from "../components/Spinner";
+import { toast } from 'react-toastify'; 
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
+  const [searchQuery, setSearchQuery] = useState(""); 
 
   useEffect(() => {
     loadUsers();
@@ -31,7 +32,9 @@ const UserList = () => {
     try {
       await deleteUser(id);
       setUsers(users.filter((user) => user._id !== id));
+      toast.success("User deleted successfully!");
     } catch {
+      toast.error("Failed to delete user");
       alert("Failed to delete user");
     } finally {
       setLoading(false);
@@ -81,7 +84,7 @@ const UserList = () => {
             <table className="table-auto w-full border-collapse border border-gray-200">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="px-4 py-2 text-left text-gray-600 border-b">#</th>
+                  <th className="px-4 py-2 text-left text-gray-600 border-b">Id</th>
                   <th className="px-4 py-2 text-left text-gray-600 border-b">First Name</th>
                   <th className="px-4 py-2 text-left text-gray-600 border-b">Last Name</th>
                   <th className="px-4 py-2 text-left text-gray-600 border-b">Email</th>

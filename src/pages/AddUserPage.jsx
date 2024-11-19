@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { addUser } from "../api";
 import UserForm from "../components/UserForm";
 import Spinner from "../components/Spinner";
+import { toast } from 'react-toastify'; 
 
 const AddUserPage = () => {
   const navigate = useNavigate();
@@ -12,9 +13,12 @@ const AddUserPage = () => {
     setLoading(true);
     try {
       await addUser(userData);
+      toast.success("User added successfully!"); 
       navigate("/");
+
     } catch {
-      alert("Failed to add user");
+      toast.error("Failed to add user");
+     
     } finally {
       setLoading(false);
     }

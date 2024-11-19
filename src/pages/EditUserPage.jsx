@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchUsers, updateUser } from "../api";
 import UserForm from "../components/UserForm";
 import Spinner from "../components/Spinner";
+import { toast } from 'react-toastify';
 
 const EditUserPage = () => {
   const { id } = useParams();
@@ -24,9 +25,11 @@ const EditUserPage = () => {
     setLoading(true);
     try {
       await updateUser(id, data);
+      toast.success("User updated successfully!");
       navigate("/",);
     } catch {
-      alert("Failed to update user");
+      toast.error("Failed to update user");
+
     } finally {
       setLoading(false);
     }
@@ -39,7 +42,7 @@ const EditUserPage = () => {
   ) : (
     <p>User not found</p>
   );
-  
+
 };
 
 export default EditUserPage;

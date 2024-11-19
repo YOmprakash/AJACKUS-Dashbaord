@@ -16,7 +16,7 @@ const UserForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-full md:h-screen">
 
     
     <form
